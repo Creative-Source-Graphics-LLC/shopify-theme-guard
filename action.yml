@@ -1,0 +1,40 @@
+name: Shopify Theme Guard
+description: Flag hardcoded secrets, unescaped customer input and unpinned scripts in Shopify themes.
+author: Creative Source Graphics, LLC
+branding:
+  icon: shield
+  color: black
+
+inputs:
+  path:
+    description: Folder that holds the theme (the one with sections/, snippets/, layout/ ...).
+    default: .
+  checks:
+    description: "Comma-separated checks to run: secrets, escape, pinning."
+    default: secrets,escape,pinning
+  ignore:
+    description: Comma or newline separated file patterns to skip, relative to path (for example assets/vendor-*.js).
+    default: ""
+  fail-on:
+    description: "When to fail the run: secrets (default), any (any finding), or none."
+    default: secrets
+
+outputs:
+  secrets:
+    description: Number of secret findings.
+    value: ${{ steps.guard.outputs.secrets }}
+  warnings:
+    description: Number of other findings.
+    value: ${{ steps.guard.outputs.warnings }}
+
+runs:
+  using: composite
+  steps:
+    - id: guard
+      shell: bash
+      run: python3 "${{ github.action_path }}/guard.py"
+      env:
+        TG_PATH: ${{ inputs.path }}
+        TG_CHECKS: ${{ inputs.checks }}
+        TG_IGNORE: ${{ inputs.ignore }}
+        TG_FAIL_ON: ${{ inputs.fail-on }}
