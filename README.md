@@ -1,5 +1,12 @@
 # Shopify Theme Guard
 
+[![Marketplace](https://img.shields.io/badge/Marketplace-Shopify%20Theme%20Guard-ffffff?style=flat&logo=github&logoColor=white&labelColor=000000)](https://github.com/marketplace/actions/shopify-theme-guard)
+[![Release](https://img.shields.io/github/v/release/Creative-Source-Graphics-LLC/shopify-theme-guard?style=flat&labelColor=000000&color=ffffff)](https://github.com/Creative-Source-Graphics-LLC/shopify-theme-guard/releases)
+[![License: MIT](https://img.shields.io/badge/License-MIT-ffffff?style=flat&labelColor=000000)](LICENSE)
+![Shopify themes](https://img.shields.io/badge/Shopify-themes-ffffff?style=flat&logo=shopify&logoColor=white&labelColor=000000)
+![Language: Liquid](https://img.shields.io/badge/Language-Liquid-ffffff?style=flat&labelColor=000000)
+![Checks: security](https://img.shields.io/badge/Checks-security-ffffff?style=flat&labelColor=000000)
+
 A GitHub Action that checks a Shopify theme for three problems that are easy to miss in review and costly in production:
 
 - **Hardcoded secrets**: API tokens, app secrets, private keys and `hmac_sha256` signing keys written straight into Liquid, JSON or JS. Anyone with access to the theme or the repo can read them.
